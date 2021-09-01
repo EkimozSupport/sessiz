@@ -16,25 +16,23 @@ FayasNoushad = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-START_TEXT = """
-Hello {}, I am a google translator telegram bot.
-
-Made by @FayasNoushad
+START_TEXT  =  """
+Merhaba {}, ben bir google çevirmen telegram botuyum.
+@kizilsancaksahibi tarafından yapılmıştır
 """
-HELP_TEXT = """
-- Just send a text with language code
-- And select a language for translating
-
-Made by @FayasNoushad
+HELP_TEXT  =  """
+- Sadece dil kodu içeren bir metin gönderin
+- Ve çeviri için bir dil seçin
+@kizilsancaksahibi tarafından yapılmıştır
 """
-ABOUT_TEXT = """
-- **Bot :** `Translator Bot V2`
-- **Creator :** [Fayas](https://telegram.me/TheFayas)
-- **Channel :** [Fayas Noushad](https://telegram.me/FayasNoushad)
-- **Source :** [Click here](https://github.com/FayasNoushad/Translator-Bot-V2)
-- **Language :** [Python3](https://python.org)
-- **Library :** [Pyrogram](https://pyrogram.org)
-- **Server :** [Heroku](https://heroku.com)
+ABOUT_TEXT  =  """
+- **Bot :** `𝙲𝙴𝚅İ𝚁𝙼𝙴𝙽 𝙱𝙴𝚈`
+- **Yaratıcı :** [Fayas](https://t.me/kizilsancaksahibi)
+- **Kanal :** [Fayas Noushad](https://telegram.me/kizilsancakbilgi)
+- **Kaynak :** [Buraya tıklayın](https://t.me/kizilinsancagi)
+- **Dil :** [Python3](https://python.org)
+- **Kütüphane :** [Pyrogram](https://pyrogram.org)
+- **Sunucu:** [Heroku](https://heroku.com)
 """
 START_BUTTONS = InlineKeyboardMarkup(
         [[
@@ -52,8 +50,8 @@ HELP_BUTTONS = InlineKeyboardMarkup(
     )
 ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Channel', url='https://telegram.me/FayasNoushad'),
-        InlineKeyboardButton('Feedback', url='https://telegram.me/TheFayas')
+        InlineKeyboardButton('Channel', url='https://telegram.me/kizilinsancagi'),
+        InlineKeyboardButton('Feedback', url='https://telegram.me/kizilsancakbilgi')
         ],[
         InlineKeyboardButton('Home', callback_data='home'),
         InlineKeyboardButton('Help', callback_data='help'),
@@ -67,7 +65,7 @@ CLOSE_BUTTON = InlineKeyboardMarkup(
     )
 TRANSLATE_BUTTON = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
+        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/kizilinsancagi')
         ]]
     )
 LANGUAGE_BUTTONS = InlineKeyboardMarkup(
@@ -129,7 +127,7 @@ async def cb_data(bot, update):
             translate_text = f"**Translated to {language}**"
             translate_text += f"\n\n{translate.text}"
             if len(translate_text) < 4096:
-                translate_text += "\n\nMade by @FayasNoushad"
+                translate_text += "\n\nMade by @kizilinsancagi"
                 await message.edit_text(
                     text=translate_text,
                     disable_web_page_preview=True,
@@ -140,13 +138,13 @@ async def cb_data(bot, update):
                     translate_file.name = language + ".txt"
                     await update.reply_document(
                         document=translate_file,
-                        caption="Made by @FayasNoushad",
+                        caption="Made by @kizilsancaksahibi",
                         reply_markup=TRANSLATE_BUTTON
                     )
                 await message.delete()
         except Exception as error:
             print(error)
-            await message.edit_text("Something wrong. Contact @TheFayas.")
+            await message.edit_text("Something wrong. Contact @kizilsancak.")
 
 @FayasNoushad.on_message(filters.command(["start"]))
 async def start(bot, update):
